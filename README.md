@@ -6,7 +6,7 @@ The Emotion-Based Movie Recommendation System is an AI chatbot that detects a us
 # based on their mood using an NLP model and Gradio UI.
 # -------------------------------------------------------
 
-# ✅ Step 1: Install & Import Required Libraries 
+Step 1: Install & Import Required Libraries 
 !pip install transformers gradio torch pandas --quiet
 
 import pandas as pd
@@ -14,13 +14,13 @@ import torch
 from transformers import pipeline
 import gradio as gr
 
-# ✅ Step 2: Load Emotion Detection Model
+Step 2: Load Emotion Detection Model
 emotion_analyzer = pipeline(
     "text-classification", 
     model="bhadresh-savani/distilbert-base-uncased-emotion"
 )
 
-# ✅ Step 3: Create / Load Movie Dataset
+Step 3: Create / Load Movie Dataset
 # You can replace this with your own dataset if desired.
 data = {
     "mood": ["joy", "sadness", "anger", "fear", "love", "surprise", "neutral"],
@@ -38,10 +38,10 @@ data = {
 movies_df = pd.DataFrame(data)
 movies_df.to_csv("/content/movies_dataset.csv", index=False)
 
-print("✅ Movie dataset created successfully!")
+print(" Movie dataset created successfully!")
 print(movies_df.head())
 
-# ✅ Step 4: Define Mood-to-Movie Mapping
+ Step 4: Define Mood-to-Movie Mapping
 mood_to_movie = {
     "joy": ["The Intern", "Paddington 2", "The Secret Life of Walter Mitty", "Inside Out"],
     "sadness": ["The Pursuit of Happyness", "A Monster Calls", "Hachi: A Dog's Tale", "The Green Mile"],
@@ -52,7 +52,7 @@ mood_to_movie = {
     "neutral": ["Forrest Gump", "The Shawshank Redemption", "The Social Network", "Moneyball"]
 }
 
-# ✅ Step 5: Chatbot Function
+Step 5: Chatbot Function
 def chatbot_response(message, chat_history=[]):
     # Detect the emotion from user input
     emotion = emotion_analyzer(message)[0]['label'].lower()
@@ -68,7 +68,7 @@ def chatbot_response(message, chat_history=[]):
     chat_history.append((message, response))
     return "", chat_history
 
-# ✅ Step 6: Gradio Interface
+Step 6: Gradio Interface
 with gr.Blocks() as demo:
     gr.Markdown("## 🎬 Welcome to Emotion-Based AI Movie Recommender 🍿")
     gr.Markdown("Hey there! 👋 Tell me how you feel, and I’ll suggest some great movies to match your mood.")
