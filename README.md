@@ -1,6 +1,6 @@
 # Mood-Based-Movie-Suggestion
 The Emotion-Based Movie Recommendation System is an AI chatbot that detects a user’s mood using NLP and suggests movies that match their emotions. Built with Python, Transformers, Pandas, and Gradio, it provides an interactive, user-friendly experience and runs easily on Google Colab for entertainment and analysis.
-# 🎬 Emotion-Based Movie Recommendation Chatbot
+#  Emotion-Based Movie Recommendation Chatbot
 # -------------------------------------------------------
 # This chatbot detects user emotion and recommends movies
 # based on their mood using an NLP model and Gradio UI.
@@ -61,20 +61,20 @@ def chatbot_response(message, chat_history=[]):
     movies = mood_to_movie.get(emotion, mood_to_movie["neutral"])
 
     # Create chatbot reply
-    response = f"🎭 You seem to be feeling **{emotion}**.\nHere are some movies that might match your mood:\n"
+    response = f" You seem to be feeling **{emotion}**.\nHere are some movies that might match your mood:\n"
     for m in movies:
-        response += f"🎬 {m}\n"
+        response += f" {m}\n"
 
     chat_history.append((message, response))
     return "", chat_history
 
 Step 6: Gradio Interface
 with gr.Blocks() as demo:
-    gr.Markdown("## 🎬 Welcome to Emotion-Based AI Movie Recommender 🍿")
-    gr.Markdown("Hey there! 👋 Tell me how you feel, and I’ll suggest some great movies to match your mood.")
+    gr.Markdown("##  Welcome to Emotion-Based AI Movie Recommender ")
+    gr.Markdown("Hey there!  Tell me how you feel, and I’ll suggest some great movies to match your mood.")
 
     chatbot = gr.Chatbot(label="🎥 Movie Mood Assistant")
-    msg = gr.Textbox(placeholder="Type how you feel...", label="Your Mood 💬")
+    msg = gr.Textbox(placeholder="Type how you feel...", label="Your Mood ")
     clear = gr.Button("Clear Chat")
 
     msg.submit(chatbot_response, [msg, chatbot], [msg, chatbot])
